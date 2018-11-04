@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: illiant的博客
 subtitle:
 description:
 keywords:
@@ -79,5 +79,5 @@ theme: icarus
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:TttonyWwhite/TttonyWwhite.github.io.git
+  repo: https://github.com/TttonyWwhite/TttonyWwhite.github.io.git
   branch: master
