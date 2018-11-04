@@ -14,22 +14,22 @@
 <meta property="og:site_name" content="illiant的博客">
 <meta property="og:description" content="Language Implementation Patterns 笔记">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102102847128.png">
-<meta property="og:image" content="http://yoursite.com/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102103144258.png">
-<meta property="og:image" content="http://yoursite.com/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102105302281.png">
-<meta property="og:image" content="http://yoursite.com/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102105359853.png">
-<meta property="og:image" content="http://yoursite.com/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102184013084.png">
-<meta property="og:image" content="http://yoursite.com/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102193710650.png">
-<meta property="og:image" content="http://yoursite.com/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102194939685.png">
-<meta property="og:image" content="http://yoursite.com/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102204215389.png">
-<meta property="og:image" content="http://yoursite.com/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102204344476.png">
-<meta property="og:image" content="http://yoursite.com/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102204515197.png">
-<meta property="og:image" content="http://yoursite.com/Users/illiant/Library/Application%20Support/typora-user-images/image-20181103151142243.png">
-<meta property="og:updated_time" content="2018-11-04T14:20:56.899Z">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fwwedbr009j30c005ut8w.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fwwed1vs35j30cz026wer.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fwwede3sekj30f105hwf0.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fwwed3jq75j30ac036aa3.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fwwed9m3nij30fo02rmxm.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fwwedag6cxj30f302pmxc.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fwwed4ctj9j30dp034gm0.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fwwedcnr7gj307r025mx2.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fwwed547nij30bg026mx4.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fwwed6fhd7j30c502djre.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fwwed79gjsj30ev01bt8t.jpg">
+<meta property="og:updated_time" content="2018-11-04T14:26:48.472Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Language Implementation Patterns笔记">
 <meta name="twitter:description" content="Language Implementation Patterns 笔记">
-<meta name="twitter:image" content="http://yoursite.com/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102102847128.png">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fwwedbr009j30c005ut8w.jpg">
 
 
 
@@ -176,7 +176,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 697 words)
+                    5 minutes read (About 715 words)
                 </span>
                 
             </div>
@@ -191,10 +191,10 @@
             <p>Language Implementation Patterns 笔记</p>
 <a id="more"></a>
 <h3 id="Chapter-2-Basic-Parsing-Patterns"><a href="#Chapter-2-Basic-Parsing-Patterns" class="headerlink" title="Chapter 2 Basic Parsing Patterns"></a>Chapter 2 Basic Parsing Patterns</h3><h4 id="2-1-Identify-Phrase-Structure"><a href="#2-1-Identify-Phrase-Structure" class="headerlink" title="2.1 Identify Phrase Structure"></a>2.1 Identify Phrase Structure</h4><p>parse tree</p>
-<p><img src="/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102102847128.png" alt="image-20181102102847128"></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fwwedbr009j30c005ut8w.jpg" alt="image-20181102102847128"></p>
 <h4 id="2-2-Building-Recursive-Descent-Parsers"><a href="#2-2-Building-Recursive-Descent-Parsers" class="headerlink" title="2.2 Building Recursive-Descent Parsers"></a>2.2 Building Recursive-Descent Parsers</h4><ol>
 <li><p>The basic method: make a function for each named substructure of the parse tree. Each function execute code to match its children.</p>
-<p><img src="/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102103144258.png" alt="image-20181102103144258"></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fwwed1vs35j30cz026wer.jpg" alt="image-20181102103144258"></p>
 </li>
 <li><p>LL(1) Building Recursive-Descent Parser</p>
 <p>First L means “read the input from left to right”. Second L means “descend into parse tree children from left to right”. 1 means how many chars we look ahead.</p>
@@ -203,15 +203,15 @@
 <h4 id="2-3-Parser-Construction-Using-a-Grammar-DSL"><a href="#2-3-Parser-Construction-Using-a-Grammar-DSL" class="headerlink" title="2.3 Parser Construction Using a Grammar DSL"></a>2.3 Parser Construction Using a Grammar DSL</h4><p>The parsing functions above are similar and consistent, so we need to find a way to build this functions automaticlly.</p>
 <p>Grammars are concise and act like functional specifications for languages.</p>
 <p>Substructures in the parse tree and functions in the parser correspond to rules in a grammar.</p>
-<p><img src="/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102105302281.png" alt="image-20181102105302281"></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fwwede3sekj30f105hwf0.jpg" alt="image-20181102105302281"></p>
 <p>use syntax diagram to visualize the control flow</p>
-<p><img src="/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102105359853.png" alt="image-20181102105359853"></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fwwed3jq75j30ac036aa3.jpg" alt="image-20181102105359853"></p>
 <h4 id="2-4-Tokenizer-Sentences"><a href="#2-4-Tokenizer-Sentences" class="headerlink" title="2.4 Tokenizer Sentences"></a>2.4 Tokenizer Sentences</h4><p>词法: Recognizers that feed off character streams are called tokenizers or leaxers.</p>
 <p>Example: lists of names such as [a,b,c] and nested lists such as [a, [b,c],c].</p>
-<p><img src="/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102184013084.png" alt="image-20181102184013084"></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fwwed9m3nij30fo02rmxm.jpg" alt="image-20181102184013084"></p>
 <p>词法分析和语法分析的设计模式是相似的。区别在于输入的符号，词法分析器接受的输入是characters，而语法分析器接受的输入是tokens。</p>
 <p><strong>Classic Parsing Patterns</strong></p>
-<h5 id="1-Mapping-Grammars-to-Recursive-Descent-Recognizers"><a href="#1-Mapping-Grammars-to-Recursive-Descent-Recognizers" class="headerlink" title="1 Mapping Grammars to Recursive-Descent Recognizers"></a>1 Mapping Grammars to Recursive-Descent Recognizers</h5><p><img src="/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102193710650.png" alt="image-20181102193710650"></p>
+<h5 id="1-Mapping-Grammars-to-Recursive-Descent-Recognizers"><a href="#1-Mapping-Grammars-to-Recursive-Descent-Recognizers" class="headerlink" title="1 Mapping Grammars to Recursive-Descent Recognizers"></a>1 Mapping Grammars to Recursive-Descent Recognizers</h5><p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fwwedag6cxj30f302pmxc.jpg" alt="image-20181102193710650"></p>
 <p>Converting Rules</p>
 <p>对语法中的每一个规则 r，建立一个同名方法</p>
 <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">r</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -223,20 +223,20 @@
 <p>Converting Subrules</p>
 <p>对于以下的subrules</p>
 <p>(&lt;<alt1>&gt;|&lt;<alt2>&gt;|..|&lt;<altn>)</altn></alt2></alt1></p>
-<p><img src="/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102194939685.png" alt="image-20181102194939685"></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fwwed4ctj9j30dp034gm0.jpg" alt="image-20181102194939685"></p>
 <p>(T)? looks like</p>
-<p><img src="/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102204215389.png" alt="image-20181102204215389"></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fwwedcnr7gj307r025mx2.jpg" alt="image-20181102204215389"></p>
 <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span>(&lt;&lt;lookahead-is-T&gt;&gt;) &#123;match(T);&#125;</span><br></pre></td></tr></table></figure>
 <p>(…)+ become do-while loops</p>
-<p><img src="/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102204344476.png" alt="image-20181102204344476"></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fwwed547nij30bg026mx4.jpg" alt="image-20181102204344476"></p>
 <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">do</span> &#123;</span><br><span class="line">    &lt;&lt;code-matching-alternatives&gt;&gt;</span><br><span class="line">&#125; <span class="hljs-keyword">while</span> (&lt;&lt;lookahead-predicts-an-alt-of-subrule&gt;&gt;)</span><br></pre></td></tr></table></figure>
 <p>(…)* looks like</p>
-<p><img src="/Users/illiant/Library/Application%20Support/typora-user-images/image-20181102204515197.png" alt="image-20181102204515197"></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fwwed6fhd7j30c502djre.jpg" alt="image-20181102204515197"></p>
 <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">while</span> (&lt;&lt;lookahead-predicts-an-alt-of-subrule&gt;&gt;) &#123;</span><br><span class="line">    &lt;&lt;code-matching-alternatives&gt;&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="2-LL-1-Recursive-Descent-Lexer"><a href="#2-LL-1-Recursive-Descent-Lexer" class="headerlink" title="2. LL(1) Recursive-Descent Lexer"></a>2. LL(1) Recursive-Descent Lexer</h5><h5 id="3-LL-1-Recursive-Descent-Parser"><a href="#3-LL-1-Recursive-Descent-Parser" class="headerlink" title="3. LL(1) Recursive-Descent Parser"></a>3. LL(1) Recursive-Descent Parser</h5><p>​    Compute lookahead sets: First and Follow</p>
 <h5 id="4-LL-K-Recursive-Descent-Parser"><a href="#4-LL-K-Recursive-Descent-Parser" class="headerlink" title="4. LL(K) Recursive-Descent Parser"></a>4. LL(K) Recursive-Descent Parser</h5><p>​    The strength of a recursive-descent parser depends entirely on the strength of its lookahead decision. By allowing a lager (but still fixed) lookahead buffer, we get a parser strong enough for most computer language.</p>
 <h3 id="Chapter3-Enhanced-Parsing-Patterns"><a href="#Chapter3-Enhanced-Parsing-Patterns" class="headerlink" title="Chapter3 Enhanced Parsing Patterns"></a>Chapter3 Enhanced Parsing Patterns</h3><h4 id="3-1-Parsing-with-Arbitrary-Lookahead"><a href="#3-1-Parsing-with-Arbitrary-Lookahead" class="headerlink" title="3.1 Parsing with Arbitrary Lookahead"></a>3.1 Parsing with Arbitrary Lookahead</h4><p>Sometimes LL(k) method is too weak to distinguish function definitions from declarations using a natural grammar. For example:</p>
-<p><img src="/Users/illiant/Library/Application%20Support/typora-user-images/image-20181103151142243.png" alt="image-20181103151142243"></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fwwed79gjsj30ev01bt8t.jpg" alt="image-20181103151142243"></p>
 <p>在这种情况下，需要用到Backtracking Parser.</p>
 <p>Backtracking Parser 试探性地进行语法分析，如果不能匹配，就回溯输入，再进行下一次尝试。</p>
 <p>试探性尝试存在顺序，这样规定好的顺序可以解决语法上的不确定性。</p>
