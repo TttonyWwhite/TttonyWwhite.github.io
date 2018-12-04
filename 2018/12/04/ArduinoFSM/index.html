@@ -2,18 +2,22 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Category: 技术 - illiant的博客</title>
+<title>使用Arduino实现一个简单的统计长按次数的程序 - illiant的博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="illiant的博客">
-<meta property="og:url" content="http://yoursite.com/categories/技术/index.html">
+    <meta name="description" content="代码比较简单，只有几个注意点要提一下。 我用的是Arduino Uno的板子，所以只有两个串口能收到中断请求。所以按钮要接在串口0或1上。 另外在attachInterrupt函数里，第一个参数是中断串口号，这里不能直接写串口的数字号，需要用digitalPinToInterrupt函数转换一下。在官方文档里这样是推荐的写法，而我一开始没这么写的时候就没法收到中断请求。 实现功能的思路是根据按下按">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Arduino实现一个简单的统计长按次数的程序">
+<meta property="og:url" content="http://yoursite.com/2018/12/04/ArduinoFSM/index.html">
 <meta property="og:site_name" content="illiant的博客">
+<meta property="og:description" content="代码比较简单，只有几个注意点要提一下。 我用的是Arduino Uno的板子，所以只有两个串口能收到中断请求。所以按钮要接在串口0或1上。 另外在attachInterrupt函数里，第一个参数是中断串口号，这里不能直接写串口的数字号，需要用digitalPinToInterrupt函数转换一下。在官方文档里这样是推荐的写法，而我一开始没这么写的时候就没法收到中断请求。 实现功能的思路是根据按下按">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-12-04T02:39:56.549Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="illiant的博客">
+<meta name="twitter:title" content="使用Arduino实现一个简单的统计长按次数的程序">
+<meta name="twitter:description" content="代码比较简单，只有几个注意点要提一下。 我用的是Arduino Uno的板子，所以只有两个串口能收到中断请求。所以按钮要接在串口0或1上。 另外在attachInterrupt函数里，第一个参数是中断串口号，这里不能直接写串口的数字号，需要用digitalPinToInterrupt函数转换一下。在官方文档里这样是推荐的写法，而我一开始没这么写的时候就没法收到中断请求。 实现功能的思路是根据按下按">
 
 
 
@@ -145,18 +149,6 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">Categories</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">技术</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
@@ -180,7 +172,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/12/04/ArduinoFSM/">使用Arduino实现一个简单的统计长按次数的程序</a>
+                使用Arduino实现一个简单的统计长按次数的程序
             
         </h1>
         <div class="content">
@@ -200,57 +192,45 @@
 </div>
 
 
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-04T07:10:06.000Z">2018-11-04</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/技术/">技术</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 minutes read (About 687 words)
-                </span>
-                
-            </div>
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/11/04/Language-Implementation-Patterns笔记/">
+                <span class="level-item">Language Implementation Patterns笔记</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/11/04/Exceptions-are-Gotos/">Exceptions are Gotos</a>
-            
-        </h1>
-        <div class="content">
-            <h3 id="Exceptions-they-are-one-of-those-most-complex-and-ridiculous-thing-ever-devised-——Jonathan-Blow"><a href="#Exceptions-they-are-one-of-those-most-complex-and-ridiculous-thing-ever-devised-——Jonathan-Blow" class="headerlink" title="Exceptions, they are one of those most complex and ridiculous thing ever devised ——Jonathan Blow"></a><strong>Exceptions, they are one of those most complex and ridiculous thing ever devised</strong> ——Jonathan Blow</h3>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/11/04/Exceptions-are-Gotos/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
         
     </div>
 </div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2018/12/04/ArduinoFSM/';
+        this.page.identifier = '2018/12/04/ArduinoFSM/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'illiant' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
 
-
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
 </div>
                 
 
