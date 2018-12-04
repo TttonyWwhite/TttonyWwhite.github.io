@@ -7,17 +7,17 @@
 
 
 
-    <meta name="description" content="代码比较简单，只有几个注意点要提一下。 我用的是Arduino Uno的板子，所以只有两个串口能收到中断请求。所以按钮要接在串口0或1上。 另外在attachInterrupt函数里，第一个参数是中断串口号，这里不能直接写串口的数字号，需要用digitalPinToInterrupt函数转换一下。在官方文档里这样是推荐的写法，而我一开始没这么写的时候就没法收到中断请求。 实现功能的思路是根据按下按">
+    <meta name="description" content="使用Arduino实现一个简单的统计长按次数的程序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Arduino实现一个简单的统计长按次数的程序">
 <meta property="og:url" content="http://yoursite.com/2018/12/04/ArduinoFSM/index.html">
 <meta property="og:site_name" content="illiant的博客">
-<meta property="og:description" content="代码比较简单，只有几个注意点要提一下。 我用的是Arduino Uno的板子，所以只有两个串口能收到中断请求。所以按钮要接在串口0或1上。 另外在attachInterrupt函数里，第一个参数是中断串口号，这里不能直接写串口的数字号，需要用digitalPinToInterrupt函数转换一下。在官方文档里这样是推荐的写法，而我一开始没这么写的时候就没法收到中断请求。 实现功能的思路是根据按下按">
+<meta property="og:description" content="使用Arduino实现一个简单的统计长按次数的程序">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-04T02:39:56.549Z">
+<meta property="og:updated_time" content="2018-12-04T02:43:03.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Arduino实现一个简单的统计长按次数的程序">
-<meta name="twitter:description" content="代码比较简单，只有几个注意点要提一下。 我用的是Arduino Uno的板子，所以只有两个串口能收到中断请求。所以按钮要接在串口0或1上。 另外在attachInterrupt函数里，第一个参数是中断串口号，这里不能直接写串口的数字号，需要用digitalPinToInterrupt函数转换一下。在官方文档里这样是推荐的写法，而我一开始没这么写的时候就没法收到中断请求。 实现功能的思路是根据按下按">
+<meta name="twitter:description" content="使用Arduino实现一个简单的统计长按次数的程序">
 
 
 
@@ -164,7 +164,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 408 words)
+                    3 minutes read (About 428 words)
                 </span>
                 
             </div>
@@ -176,7 +176,9 @@
             
         </h1>
         <div class="content">
-            <p>代码比较简单，只有几个注意点要提一下。</p>
+            <p>使用Arduino实现一个简单的统计长按次数的程序</p>
+<a id="more"></a>
+<p>代码比较简单，只有几个注意点要提一下。</p>
 <p>我用的是Arduino Uno的板子，所以只有两个串口能收到中断请求。所以按钮要接在串口0或1上。</p>
 <p>另外在attachInterrupt函数里，第一个参数是中断串口号，这里不能直接写串口的数字号，需要用digitalPinToInterrupt函数转换一下。在官方文档里这样是推荐的写法，而我一开始没这么写的时候就没法收到中断请求。</p>
 <p>实现功能的思路是根据按下按钮和松开会触发两次中断产生的。设置一个状态量，记录这时是按下还是松开，如果是按下，就用mills()记录时间。如果是松开，就用现在的时间减去之间记录的时间，这样就得到了按住按钮的时间。然后再判断是不是长按。</p>

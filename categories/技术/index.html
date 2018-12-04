@@ -172,7 +172,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 408 words)
+                    3 minutes read (About 428 words)
                 </span>
                 
             </div>
@@ -184,16 +184,17 @@
             
         </h1>
         <div class="content">
-            <p>代码比较简单，只有几个注意点要提一下。</p>
-<p>我用的是Arduino Uno的板子，所以只有两个串口能收到中断请求。所以按钮要接在串口0或1上。</p>
-<p>另外在attachInterrupt函数里，第一个参数是中断串口号，这里不能直接写串口的数字号，需要用digitalPinToInterrupt函数转换一下。在官方文档里这样是推荐的写法，而我一开始没这么写的时候就没法收到中断请求。</p>
-<p>实现功能的思路是根据按下按钮和松开会触发两次中断产生的。设置一个状态量，记录这时是按下还是松开，如果是按下，就用mills()记录时间。如果是松开，就用现在的时间减去之间记录的时间，这样就得到了按住按钮的时间。然后再判断是不是长按。</p>
-<p>作业要求是要用到FSM，也就是有限状态机。但是这个程序非常简单，所以就直接用if-else实现了。毕竟if-else也是有限状态机的一种实现方式嘛。</p>
-<p>具体代码如下</p>
-<figure class="highlight c hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> byte ledPin = <span class="hljs-number">13</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> byte interruptPin = <span class="hljs-number">2</span>;</span><br><span class="line"><span class="hljs-keyword">volatile</span> byte state = LOW;</span><br><span class="line"><span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;</span><br><span class="line">boolean is_begin = <span class="hljs-literal">true</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> t1 = <span class="hljs-number">0</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> t2 = <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  pinMode(ledPin, OUTPUT);</span><br><span class="line">  pinMode(interruptPin, INPUT_PULLUP);</span><br><span class="line">  Serial.begin(<span class="hljs-number">9600</span>);</span><br><span class="line">  attachInterrupt(digitalPinToInterrupt(interruptPin), pressed, RISING);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">loop</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Serial.println(count);</span></span><br><span class="line">  digitalWrite(ledPin, state);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pressed</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (is_begin)</span><br><span class="line">  &#123;</span><br><span class="line">    Serial.println(<span class="hljs-string">"pressed"</span>);</span><br><span class="line">    t1 = millis();</span><br><span class="line">    is_begin = <span class="hljs-literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    Serial.println(<span class="hljs-string">"released"</span>);</span><br><span class="line">    t2 = millis() - t1;</span><br><span class="line">    Serial.println(t2);</span><br><span class="line">    <span class="hljs-keyword">if</span> (t2 &gt;= <span class="hljs-number">1000</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="hljs-comment">//是长按，计数</span></span><br><span class="line">      count++;</span><br><span class="line">      Serial.print(<span class="hljs-string">"long press times: "</span>);</span><br><span class="line">      Serial.println(count);</span><br><span class="line">    &#125;</span><br><span class="line">    is_begin = <span class="hljs-literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  delay(<span class="hljs-number">500</span>); <span class="hljs-comment">//消抖</span></span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+            <p>使用Arduino实现一个简单的统计长按次数的程序</p>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2018/12/04/ArduinoFSM/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
