@@ -2,18 +2,29 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Archives - illiant的博客</title>
+<title>Vue.js页面后退时数据缓存问题 - illiant的博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="illiant的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+    <meta name="description" content="Vue.js页面后退时数据缓存问题">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue.js页面后退时数据缓存问题">
+<meta property="og:url" content="http://yoursite.com/2019/03/01/Vue.js页面后退时数据缓存问题/index.html">
 <meta property="og:site_name" content="illiant的博客">
+<meta property="og:description" content="Vue.js页面后退时数据缓存问题">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1g0nkoitxrlj3053024q2w.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1g0nkt54jylj308v07jmxh.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1g0nl1v2agmj30ps0210t0.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1g0nl7blvcoj30ba00x3yg.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1g0nl7ijx0yj304w019746.jpg">
+<meta property="og:updated_time" content="2019-03-01T13:00:53.736Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="illiant的博客">
+<meta name="twitter:title" content="Vue.js页面后退时数据缓存问题">
+<meta name="twitter:description" content="Vue.js页面后退时数据缓存问题">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1g0nkoitxrlj3053024q2w.jpg">
 
 
 
@@ -110,7 +121,7 @@
                 
                 <a class="navbar-item" href="/">Home</a>
                 
-                <a class="navbar-item is-active" href="/archives">Archives</a>
+                <a class="navbar-item" href="/archives">Archives</a>
                 
                 <a class="navbar-item" href="/categories">Categories</a>
                 
@@ -144,128 +155,112 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
         
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2019
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-01T12:53:06.000Z">2019-03-01</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-03-01T12:53:06.000Z">2019-03-01</time>
-                        <a href="/2019/03/01/Vue.js页面后退时数据缓存问题/" class="has-link-black-ter is-size-6">Vue.js页面后退时数据缓存问题</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/技术/">技术</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/技术/">技术</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-02-28T12:53:06.000Z">2019-02-28</time>
-                        <a href="/2019/02/28/Vue中实现子组件修改父组件数据/" class="has-link-black-ter is-size-6">Vue.js实现子组件修改父组件数据</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/技术/">技术</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 912 words)
+                </span>
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Vue.js页面后退时数据缓存问题
+            
+        </h1>
+        <div class="content">
+            <p>Vue.js页面后退时数据缓存问题</p>
+<a id="more"></a>
+<p>在大作业开发过程中遇见了一个bug， 大致情况如下：</p>
+<p>PersonalCenter页面中有一个订单列表，点击列表中的订单可以前进到订单详情界面。<br>在详情界面中，有一个表格显示订单内容，第一次进入详情界面的时候是可以正常显示的，<br>但是如果浏览器后退，再点击另一个订单，那么这个订单详情页面中的表格就会包含上一个订单中的内容。<br>初步猜测这是缓存策略的原因，于是在PersonalCenter页面在created中写了方法让A页面每次create的时候就会刷新一次，这个时候就能正常工作了。 </p>
+<p>首先要明确的一点是，这个页面组件是被keep-alive包裹的，所以Vue会缓存不活动的组件实例，而不是销毁它们。最上层代码如下：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g0nkoitxrlj3053024q2w.jpg" alt="image-20190301203604837"></p>
+<p>在旁边的navbar中点击导航按钮就可以使router-view加载PersonalCenter页面。</p>
+<p>查看Vue的文档可以知道，对于keep-alive包裹的组件，不能简单地采用created，mounted等生命周期钩子。这种情况下，页面第一次进入，钩子的触发顺序为created-&gt; mounted -&gt; activated，退出时触发deactivated，当再次进入（前进或后退）时，只触发activated。这也是出现bug的原因。</p>
+<p>所以在浏览器中点击后退时，<strong>页面中的数据并不会被销毁，而是会保存下来</strong>。</p>
+<p>进一步debug发现，进入第二个订单页面时，并不是所有的数据内容都是重复的。而是只有订单编号和订单内餐品的数据。检查代码发现，这两个数据的初始化和其他数据的确不相同。</p>
+<p>首先，订单编号是获取url中的数据来的</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g0nkt54jylj308v07jmxh.jpg" alt="image-20190301204034105"></p>
+<p>一开始只在data中给orderId进行了赋值，所以当第二次进入订单详情页面时，由于页面中的数据没有被销毁，并且也没有对orderId重新进行赋值，还是使用了上一个订单的id。</p>
+<p>而订单内餐品出现的错误则是一开始最令人困惑的，第二次进入订单详情页面居然会显示两个订单加在一起的餐品。原因在于下面这段代码：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g0nl1v2agmj30ps0210t0.jpg" alt="image-20190301204856466"></p>
+<p>其中products是用axios从后端获得到的数据，content是当前页面用来存放餐品的数组。由于content没有被重新赋值，所以再次进入这个页面时，content里还保存着上一个订单的数据，继续向content添加内容就造成了那个奇怪的bug。</p>
+<p>至于其他数据为什么没有出错，这是因为其他数据在activated函数中都进行了重新赋值。</p>
+<p>分析到这里，这个bug也很好解决了，只需要添加这两段代码：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g0nl7blvcoj30ba00x3yg.jpg" alt="image-20190301205411821"></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g0nl7ijx0yj304w019746.jpg" alt="image-20190301205422805"></p>
+<p>在加载页面时，对orderId重新进行赋值。退出页面时，将content清空，这个神秘的bug就解决了。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/vue/">vue</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
 </div>
 
-    
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
         
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2018
-        </h3>
-        <div class="timeline">
         
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-12-04T02:39:06.000Z">2018-12-04</time>
-                        <a href="/2018/12/04/ArduinoFSM/" class="has-link-black-ter is-size-6">使用Arduino实现一个简单的统计长按次数的程序</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/技术/">技术</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-11-04T14:19:00.000Z">2018-11-04</time>
-                        <a href="/2018/11/04/Language-Implementation-Patterns笔记/" class="has-link-black-ter is-size-6">Language Implementation Patterns笔记</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/笔记/">笔记</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-11-04T07:10:06.000Z">2018-11-04</time>
-                        <a href="/2018/11/04/Exceptions-are-Gotos/" class="has-link-black-ter is-size-6">Exceptions are Gotos</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/技术/">技术</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/28/Vue中实现子组件修改父组件数据/">
+                <span class="level-item">Vue.js实现子组件修改父组件数据</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
+        
     </div>
 </div>
 
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/03/01/Vue.js页面后退时数据缓存问题/';
+        this.page.identifier = '2019/03/01/Vue.js页面后退时数据缓存问题/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'illiant' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
     
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
 </div>
                 
 
