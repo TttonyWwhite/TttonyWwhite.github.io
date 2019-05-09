@@ -2,27 +2,25 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>谈谈《深入理解Java虚拟机》中关于RuntimeConstantPoolOOM的问题 - illiant的博客</title>
+<title>Vue.js页面后退时数据缓存问题 - illiant的博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="RuntimeConstantPool">
-<meta name="keywords" content="Java">
+    <meta name="description" content="Leetcode Median of two sorted array解题报告">
+<meta name="keywords" content="leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="谈谈《深入理解Java虚拟机》中关于RuntimeConstantPoolOOM的问题">
-<meta property="og:url" content="http://yoursite.com/2019/03/11/谈谈《深入理解Java虚拟机》中关于RuntimeConstantPoolOOM的问题/index.html">
+<meta property="og:title" content="Vue.js页面后退时数据缓存问题">
+<meta property="og:url" content="http://yoursite.com/2019/05/09/Leetcode 第4题 Median of two sorted array解题报告/index.html">
 <meta property="og:site_name" content="illiant的博客">
-<meta property="og:description" content="RuntimeConstantPool">
+<meta property="og:description" content="Leetcode Median of two sorted array解题报告">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1g0z3p8a2hpj30f90c90tr.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1g0z4npi3smj30fq046mxt.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1g0z4pstxohj30iz07iwfd.jpg">
-<meta property="og:updated_time" content="2019-03-11T12:34:03.473Z">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1g2v0ezflfdj30js0cugp1.jpg">
+<meta property="og:updated_time" content="2019-05-09T06:07:54.902Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="谈谈《深入理解Java虚拟机》中关于RuntimeConstantPoolOOM的问题">
-<meta name="twitter:description" content="RuntimeConstantPool">
-<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1g0z3p8a2hpj30f90c90tr.jpg">
+<meta name="twitter:title" content="Vue.js页面后退时数据缓存问题">
+<meta name="twitter:description" content="Leetcode Median of two sorted array解题报告">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1g2v0ezflfdj30js0cugp1.jpg">
 
 
 
@@ -159,17 +157,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-11T12:53:06.000Z">2019-03-11</time>
+                <time class="level-item has-text-grey" datetime="2019-05-09T05:18:01.000Z">2019-05-09</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/技术/">技术</a>
+                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 620 words)
+                    10 minutes read (About 1444 words)
                 </span>
                 
             </div>
@@ -177,21 +175,35 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                谈谈《深入理解Java虚拟机》中关于RuntimeConstantPoolOOM的问题
+                Vue.js页面后退时数据缓存问题
             
         </h1>
         <div class="content">
-            <p>RuntimeConstantPool</p>
+            <p>Leetcode Median of two sorted array解题报告</p>
 <a id="more"></a>
-<p>最近在读周志明先生的《深入理解Java虚拟机》一书，书中第二章关于方法区和运行时常量池溢出的部分有一段代码让我很困惑。代码如下：</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1g0z3p8a2hpj30f90c90tr.jpg" alt="image-20190311195523966"></p>
-<p>但我自己在IDE中运行这段代码时却得不到相同的结果，甚至电脑会直接卡住。书中代码后面的解释说是jdk版本和intern函数的问题，但又语焉不详。仔细研究和查阅资料后发现，intern()函数在jdk7以及之后的版本中，并不会把调用这个函数的实例复制到常量池中，而只是在常量池中记录首次出现的实例的<strong>引用</strong>。所以对象实际上还是存储在Java堆上，存储在常量池中的只是引用而已。想要用引用来把常量池占满是非常困难的事，所以第一段代码就几乎进入了一个死循环。为了印证这个结论，我把jvm参数改成了 -Xms2m -Xmx2m -XX:+HeapDumpOnOutOfMemoryError。这样，如果Java堆发生了溢出，就会看到报错信息，结果也确实如此。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1g0z4npi3smj30fq046mxt.jpg" alt="image-20190311202825744"></p>
-<p>另外一个问题是周志明先生为了解释上面这个问题而写的一段测试代码。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0z4pstxohj30iz07iwfd.jpg" alt="image-20190311203025419"></p>
-<p>尽管书中做了一些解释。但是为什么明明都是字符串，第二个条件判断表达式就会得到false呢？那是因为在jvm运行的过程中，除了我们自己写的类和方法，肯定还是有很多其他类，方法被实例化和运行的。这些类和方法也会向常量池中添加常量。这时候”java”就不是intern首次遇到的字符串实例了。返回的引用当然就不等于str2。</p>
-<p>至于具体是哪个类或者哪个方法，jvm圈有名的R大，也是我的校友和学长在知乎上做过解释。</p>
-<p>如何理解《深入理解java虚拟机》第二版中对String.intern()方法的讲解中所举的例子？ - RednaxelaFX的回答 - 知乎<br><a href="https://www.zhihu.com/question/51102308/answer/124441115" target="_blank" rel="noopener">https://www.zhihu.com/question/51102308/answer/124441115</a></p>
+<p>Median of two sorted array是leetcode上的第四题，如果要满足时间复杂度要求的话，算是一道相当难的题了。</p>
+<p>题目大致意思是，有两个排好序的数组，现在要找出这两个数组全部元素的中位数。</p>
+<p>看完题目的第一想法是——归并排序，把两个数组排成一个数组再得到中位数。按照这个思路，代码可以很简单的实现。</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums1, <span class="hljs-keyword">int</span>[] nums2)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span>[] total = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[nums1.length + nums2.length]; <span class="hljs-comment">// 合并后的数组</span></span><br><span class="line">        <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>; <span class="hljs-comment">// 用于遍历两个数组的index</span></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>;k &lt; nums1.length + nums2.length;k++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (i &gt;= nums1.length) total[k] = nums2[j++]; <span class="hljs-comment">// 如果一个数组已经遍历完了，那么不用比较大小，直接把另一个数组的所有元素接到total数组中</span></span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (j &gt;= nums2.length) total[k] = nums1[i++];</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums1[i] &lt; nums2[j])</span><br><span class="line">                total[k] = nums1[i++]; <span class="hljs-comment">// 把小的元素加到total数组后，index+1</span></span><br><span class="line">            <span class="hljs-keyword">else</span></span><br><span class="line">                total[k] = nums2[j++];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">double</span> median = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (total.length % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            median = (total[total.length / <span class="hljs-number">2</span> -<span class="hljs-number">1</span>] + total[total.length / <span class="hljs-number">2</span>]) / <span class="hljs-number">2.0</span>;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span></span><br><span class="line">            median = total[total.length / <span class="hljs-number">2</span>];</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> median;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>这样的做法非常直观和暴力，提交代码也是可以通过的。但是对复杂度进行分析就可以知道，由于归并排序是一种稳定的排序算法，所以无论如何都是会遍历完两个数组的所有元素的。其平均复杂度为O(nlogn)，显然是超出了题目要求的O(log (m+n))的。</p>
+<p>研究了一段时间后，我发现关键问题在于：寻找中位数时，是可以逐渐将部分元素剔除的，通过降低问题的规模就可以降低复杂度。</p>
+<p>接下来的这个方法中有很关键的一个转化是：求一个长度为k的数组的中位数也就是求这个数组中第k/2小的元素。对于两个数组来说，也是同样的道理。</p>
+<p>假设两个数组的大小分别为m和n，那我们要求的就是所有元素中第 (m + n) / 2 大的元素。（由于数组序号是0开始，实际上应该再加1）。</p>
+<p>另外，由于求中位数根据数组长度的奇偶性会分成两种情况，为了避免分情况讨论，可以用一个小trick，那就是求 (m + n + 1) / 2和 (m + n + 2) / 2两数的平均数(注意这里是加了1的情况，下文为了行文方便，就不加了)。因为int型变量向下取整的性质，当两个数组长度和为偶数时，这两个序号其实是相等的。</p>
+<p>好了，准备工作做完了，我们开始正式分析这个问题。</p>
+<p>假设有A，B两个数组，我们可以通过两个数组的中位数把两个数组分为四部分。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2v0ezflfdj30js0cugp1.jpg" alt="image-20190509134001539"></p>
+<p>接下来我们比较两个中位数的大小，如果mid1 &lt; mid2，那么我们可以断定1号部分一定是全部小于4号部分的，也就是说这四个部分的排序一定是1234或是1243。那么我们就可以断定，最后要求的中位数一定不在1号部分中。所以我们可以在接下来的递归中把1号部分删除。</p>
+<p>在把1号部分剔除之前，我们要找的是第(m+n) / 2号元素，那么剔除之后，我们要找的是多少号元素呢？</p>
+<p>我们可以做一个简单的分析，如果在一次递归中，要找的中位数是所有元素中第k小的，那么也就是说有2k个元素。这次递归中我们剔除了k/2个元素，可以确定的是，这k/2个元素一定都是在要找的中位数前面的。也就是说，要找的中位数的序号大小减小了k/2。</p>
+<p>基于这样的思想，我们可以递归地对两个数组进行遍历。递归基分为三种情况：</p>
+<ul>
+<li>如果A数组遍历完毕，就直接从B数组中找中位数</li>
+<li>如果B数组遍历完毕也类似</li>
+<li>如果每次减少k/2直到k == 1，也就是说我们要找的中位数是<strong>A，B数组剩下的元素</strong>中最小的，那么我们只要返回A，B数组中现在的第一个元素中最小的那个就行了。</li>
+</ul>
+<p>这个算法更快的原因是，每次递归我们都抛弃了一部分元素，在接下来的递归中就不会去理会这些元素，从而减少了重复工作。具体代码如下：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums1, <span class="hljs-keyword">int</span>[] nums2)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> m = nums1.length, n = nums2.length, left = (m+n+<span class="hljs-number">1</span>)/<span class="hljs-number">2</span>, right = (m+n+<span class="hljs-number">2</span>)/<span class="hljs-number">2</span>; </span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> (findKth(nums1, <span class="hljs-number">0</span>, nums2, <span class="hljs-number">0</span>, left) + findKth(nums1, <span class="hljs-number">0</span>, nums2, <span class="hljs-number">0</span>, right)) / <span class="hljs-number">2.0</span>; <span class="hljs-comment">//使用到小trick的地方</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findKth</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums1, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span>[] nums2, <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (i &gt;= nums1.length) <span class="hljs-keyword">return</span> nums2[j + k - <span class="hljs-number">1</span>];</span><br><span class="line">        <span class="hljs-keyword">if</span> (j &gt;= nums2.length) <span class="hljs-keyword">return</span> nums1[i + k - <span class="hljs-number">1</span>];</span><br><span class="line">        <span class="hljs-keyword">if</span> (k == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> Math.min(nums1[i], nums2[j]); <span class="hljs-comment">// 三种递归基情况</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">int</span> midVal1 = (i + k / <span class="hljs-number">2</span> - <span class="hljs-number">1</span> &lt; nums1.length) ? nums1[i + k / <span class="hljs-number">2</span> - <span class="hljs-number">1</span>] : Integer.MAX_VALUE; <span class="hljs-comment">// 如果求得的mid超出数组的长度，那么就不参与讨论</span></span><br><span class="line">        <span class="hljs-keyword">int</span> midVal2 = (j + k / <span class="hljs-number">2</span> - <span class="hljs-number">1</span> &lt; nums2.length) ? nums2[j + k / <span class="hljs-number">2</span> - <span class="hljs-number">1</span>] : Integer.MAX_VALUE; <span class="hljs-comment">// 需要注意的是，两个mid不可能同时超出数组的长度，所以这么写是安全的</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (midVal1 &lt; midVal2)</span><br><span class="line">            <span class="hljs-keyword">return</span> findKth(nums1, i + k / <span class="hljs-number">2</span>, nums2, j, k - k / <span class="hljs-number">2</span>); <span class="hljs-comment">// i+k/2就是抛弃了部分元素的过程</span></span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">            <span class="hljs-keyword">return</span> findKth(nums1, i, nums2, j + k / <span class="hljs-number">2</span>, k - k / <span class="hljs-number">2</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -199,7 +211,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Java/">Java</a>
+                    <a class="has-link-grey -link" href="/tags/leetcode/">leetcode</a>
                 </div>
             </div>
         </div>
@@ -213,17 +225,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/09/Leetcode 第4题 Median of two sorted array解题报告/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Vue.js页面后退时数据缓存问题</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/01/Vue.js页面后退时数据缓存问题/">
-                <span class="level-item">Vue.js页面后退时数据缓存问题</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/11/谈谈《深入理解Java虚拟机》中关于RuntimeConstantPoolOOM的问题/">
+                <span class="level-item">谈谈《深入理解Java虚拟机》中关于RuntimeConstantPoolOOM的问题</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -239,8 +244,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/2019/03/11/谈谈《深入理解Java虚拟机》中关于RuntimeConstantPoolOOM的问题/';
-        this.page.identifier = '2019/03/11/谈谈《深入理解Java虚拟机》中关于RuntimeConstantPoolOOM的问题/';
+        this.page.url = 'http://yoursite.com/2019/05/09/Leetcode 第4题 Median of two sorted array解题报告/';
+        this.page.identifier = '2019/05/09/Leetcode 第4题 Median of two sorted array解题报告/';
     };
     (function() {
         var d = document, s = d.createElement('script');  

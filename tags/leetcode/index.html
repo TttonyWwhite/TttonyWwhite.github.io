@@ -2,27 +2,18 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>谈谈《深入理解Java虚拟机》中关于RuntimeConstantPoolOOM的问题 - illiant的博客</title>
+<title>Tag: leetcode - illiant的博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="RuntimeConstantPool">
-<meta name="keywords" content="Java">
-<meta property="og:type" content="article">
-<meta property="og:title" content="谈谈《深入理解Java虚拟机》中关于RuntimeConstantPoolOOM的问题">
-<meta property="og:url" content="http://yoursite.com/2019/03/11/谈谈《深入理解Java虚拟机》中关于RuntimeConstantPoolOOM的问题/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="illiant的博客">
+<meta property="og:url" content="http://yoursite.com/tags/leetcode/index.html">
 <meta property="og:site_name" content="illiant的博客">
-<meta property="og:description" content="RuntimeConstantPool">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1g0z3p8a2hpj30f90c90tr.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1g0z4npi3smj30fq046mxt.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1g0z4pstxohj30iz07iwfd.jpg">
-<meta property="og:updated_time" content="2019-03-11T12:34:03.473Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="谈谈《深入理解Java虚拟机》中关于RuntimeConstantPoolOOM的问题">
-<meta name="twitter:description" content="RuntimeConstantPool">
-<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1g0z3p8a2hpj30f90c90tr.jpg">
+<meta name="twitter:title" content="illiant的博客">
 
 
 
@@ -154,22 +145,33 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">Tags</a></li>
+            <li class="is-active"><a href="#" aria-current="page">leetcode</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-11T12:53:06.000Z">2019-03-11</time>
+                <time class="level-item has-text-grey" datetime="2019-05-09T05:18:01.000Z">2019-05-09</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/技术/">技术</a>
+                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 620 words)
+                    10 minutes read (About 1444 words)
                 </span>
                 
             </div>
@@ -177,85 +179,30 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                谈谈《深入理解Java虚拟机》中关于RuntimeConstantPoolOOM的问题
+                <a class="has-link-black-ter" href="/2019/05/09/Leetcode 第4题 Median of two sorted array解题报告/">Vue.js页面后退时数据缓存问题</a>
             
         </h1>
         <div class="content">
-            <p>RuntimeConstantPool</p>
-<a id="more"></a>
-<p>最近在读周志明先生的《深入理解Java虚拟机》一书，书中第二章关于方法区和运行时常量池溢出的部分有一段代码让我很困惑。代码如下：</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1g0z3p8a2hpj30f90c90tr.jpg" alt="image-20190311195523966"></p>
-<p>但我自己在IDE中运行这段代码时却得不到相同的结果，甚至电脑会直接卡住。书中代码后面的解释说是jdk版本和intern函数的问题，但又语焉不详。仔细研究和查阅资料后发现，intern()函数在jdk7以及之后的版本中，并不会把调用这个函数的实例复制到常量池中，而只是在常量池中记录首次出现的实例的<strong>引用</strong>。所以对象实际上还是存储在Java堆上，存储在常量池中的只是引用而已。想要用引用来把常量池占满是非常困难的事，所以第一段代码就几乎进入了一个死循环。为了印证这个结论，我把jvm参数改成了 -Xms2m -Xmx2m -XX:+HeapDumpOnOutOfMemoryError。这样，如果Java堆发生了溢出，就会看到报错信息，结果也确实如此。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1g0z4npi3smj30fq046mxt.jpg" alt="image-20190311202825744"></p>
-<p>另外一个问题是周志明先生为了解释上面这个问题而写的一段测试代码。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0z4pstxohj30iz07iwfd.jpg" alt="image-20190311203025419"></p>
-<p>尽管书中做了一些解释。但是为什么明明都是字符串，第二个条件判断表达式就会得到false呢？那是因为在jvm运行的过程中，除了我们自己写的类和方法，肯定还是有很多其他类，方法被实例化和运行的。这些类和方法也会向常量池中添加常量。这时候”java”就不是intern首次遇到的字符串实例了。返回的引用当然就不等于str2。</p>
-<p>至于具体是哪个类或者哪个方法，jvm圈有名的R大，也是我的校友和学长在知乎上做过解释。</p>
-<p>如何理解《深入理解java虚拟机》第二版中对String.intern()方法的讲解中所举的例子？ - RednaxelaFX的回答 - 知乎<br><a href="https://www.zhihu.com/question/51102308/answer/124441115" target="_blank" rel="noopener">https://www.zhihu.com/question/51102308/answer/124441115</a></p>
-
+            <p>Leetcode Median of two sorted array解题报告</p>
         </div>
         
-        <div class="level is-size-7 is-uppercase">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Java/">Java</a>
+                <a class="button is-size-7 is-light" href="/2019/05/09/Leetcode 第4题 Median of two sorted array解题报告/#more">Read More</a>
                 </div>
             </div>
         </div>
         
         
-        
-    </div>
-</div>
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/09/Leetcode 第4题 Median of two sorted array解题报告/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Vue.js页面后退时数据缓存问题</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/01/Vue.js页面后退时数据缓存问题/">
-                <span class="level-item">Vue.js页面后退时数据缓存问题</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
     </div>
 </div>
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
-        
-<script>
-    var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/2019/03/11/谈谈《深入理解Java虚拟机》中关于RuntimeConstantPoolOOM的问题/';
-        this.page.identifier = '2019/03/11/谈谈《深入理解Java虚拟机》中关于RuntimeConstantPoolOOM的问题/';
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'illiant' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
 
-<div id="disqus_thread">
-    
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-    </div>
-</div>
+
 </div>
                 
 
