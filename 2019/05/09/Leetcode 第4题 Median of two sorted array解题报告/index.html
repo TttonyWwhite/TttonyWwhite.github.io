@@ -2,7 +2,7 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Vue.js页面后退时数据缓存问题 - illiant的博客</title>
+<title>Leetcode Median of two sorted array解题报告 - illiant的博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -10,17 +10,17 @@
     <meta name="description" content="Leetcode Median of two sorted array解题报告">
 <meta name="keywords" content="leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue.js页面后退时数据缓存问题">
+<meta property="og:title" content="Leetcode Median of two sorted array解题报告">
 <meta property="og:url" content="http://yoursite.com/2019/05/09/Leetcode 第4题 Median of two sorted array解题报告/index.html">
 <meta property="og:site_name" content="illiant的博客">
 <meta property="og:description" content="Leetcode Median of two sorted array解题报告">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1g2v0ezflfdj30js0cugp1.jpg">
-<meta property="og:updated_time" content="2019-05-09T06:07:54.902Z">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1g2v1ytj2ajj30js0cudgo.jpg">
+<meta property="og:updated_time" content="2019-05-09T06:36:07.742Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue.js页面后退时数据缓存问题">
+<meta name="twitter:title" content="Leetcode Median of two sorted array解题报告">
 <meta name="twitter:description" content="Leetcode Median of two sorted array解题报告">
-<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1g2v0ezflfdj30js0cugp1.jpg">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1g2v1ytj2ajj30js0cudgo.jpg">
 
 
 
@@ -167,7 +167,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    10 minutes read (About 1444 words)
+                    10 minutes read (About 1445 words)
                 </span>
                 
             </div>
@@ -175,7 +175,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Vue.js页面后退时数据缓存问题
+                Leetcode Median of two sorted array解题报告
             
         </h1>
         <div class="content">
@@ -192,7 +192,7 @@
 <p>另外，由于求中位数根据数组长度的奇偶性会分成两种情况，为了避免分情况讨论，可以用一个小trick，那就是求 (m + n + 1) / 2和 (m + n + 2) / 2两数的平均数(注意这里是加了1的情况，下文为了行文方便，就不加了)。因为int型变量向下取整的性质，当两个数组长度和为偶数时，这两个序号其实是相等的。</p>
 <p>好了，准备工作做完了，我们开始正式分析这个问题。</p>
 <p>假设有A，B两个数组，我们可以通过两个数组的中位数把两个数组分为四部分。</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2v0ezflfdj30js0cugp1.jpg" alt="image-20190509134001539"></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2v1ytj2ajj30js0cudgo.jpg" alt="image-20190509134001539"></p>
 <p>接下来我们比较两个中位数的大小，如果mid1 &lt; mid2，那么我们可以断定1号部分一定是全部小于4号部分的，也就是说这四个部分的排序一定是1234或是1243。那么我们就可以断定，最后要求的中位数一定不在1号部分中。所以我们可以在接下来的递归中把1号部分删除。</p>
 <p>在把1号部分剔除之前，我们要找的是第(m+n) / 2号元素，那么剔除之后，我们要找的是多少号元素呢？</p>
 <p>我们可以做一个简单的分析，如果在一次递归中，要找的中位数是所有元素中第k小的，那么也就是说有2k个元素。这次递归中我们剔除了k/2个元素，可以确定的是，这k/2个元素一定都是在要找的中位数前面的。也就是说，要找的中位数的序号大小减小了k/2。</p>
@@ -473,14 +473,14 @@
             
             <a href="/2019/05/09/Leetcode 第4题 Median of two sorted array解题报告/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue.js页面后退时数据缓存问题">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Leetcode Median of two sorted array解题报告">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-09T05:18:01.000Z">2019-05-09</time></div>
-                    <a href="/2019/05/09/Leetcode 第4题 Median of two sorted array解题报告/" class="has-link-black-ter is-size-6">Vue.js页面后退时数据缓存问题</a>
+                    <a href="/2019/05/09/Leetcode 第4题 Median of two sorted array解题报告/" class="has-link-black-ter is-size-6">Leetcode Median of two sorted array解题报告</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/算法/">算法</a>
                     </p>
@@ -703,14 +703,14 @@
             
             <a href="/2019/05/09/Leetcode 第4题 Median of two sorted array解题报告/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue.js页面后退时数据缓存问题">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Leetcode Median of two sorted array解题报告">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-09T05:18:01.000Z">2019-05-09</time></div>
-                    <a href="/2019/05/09/Leetcode 第4题 Median of two sorted array解题报告/" class="has-link-black-ter is-size-6">Vue.js页面后退时数据缓存问题</a>
+                    <a href="/2019/05/09/Leetcode 第4题 Median of two sorted array解题报告/" class="has-link-black-ter is-size-6">Leetcode Median of two sorted array解题报告</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/算法/">算法</a>
                     </p>
